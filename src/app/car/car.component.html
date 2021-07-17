@@ -22,7 +22,7 @@
         <td><span>{{car.marque}}</span></td>
         <td><span>{{car.model}}</span></td>
         <td>
-            <button class="btn btn-sm btn-info">
+            <button class="btn btn-sm btn-info" (click)="openDetails(contentDetails, car)">
               <i class="fa fa-search"></i>Details</button>
             <button class="btn btn-sm btn-warning">
               <i class="fa fa-edit"></i>Edit</button>
@@ -70,6 +70,46 @@
             <div class="border text-center">
                 <button data-dismiss="modal" class="btn btn-info">Submit</button>
                 </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+    </div>
+  </ng-template>
+
+  <ng-template #contentDetails let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title-1">Car Detail</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+            <div class="form-group">
+                <label>Color</label>
+                <div class="input-group">
+                    <input id="color_d" class="form-control" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Year</label>
+                <div class="input-group">
+                    <input id="year_d" class="form-control" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Marque</label>
+                <div class="input-group">
+                    <input id="marque_d" class="form-control" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Model</label>
+                <div class="input-group">
+                    <input id="model_d" class="form-control" readonly>
+                </div>
+            </div>
         </form>
     </div>
     <div class="modal-footer">

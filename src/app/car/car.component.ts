@@ -70,4 +70,16 @@ export class CarComponent implements OnInit {
       });
     this.modalService.dismissAll(); //dismiss the modal
   }
+
+  openDetails(targetModal: any, car: Car) {
+    this.modalService.open(targetModal, {
+     centered: true,
+     backdrop: 'static',
+     size: 'lg'
+    });
+    document.getElementById('color_d')!.setAttribute('value', car.color);
+    document.getElementById('year_d')!.setAttribute('value', car.year.toString());
+    document.getElementById('marque_d')!.setAttribute('value', car.marque);
+    document.getElementById('model_d')!.setAttribute('value', car.model);
+  }
 }

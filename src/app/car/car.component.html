@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="border">
+        <button class="btn btn-md btn-outline-primary">
+          <i class="fa fa-user"></i>New Car</button>
+    </div>
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Color</th>
+        <th>Year</th>
+        <th>Marque</th>
+        <th>Model</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let car of cars">
+        <td><span>{{car.id}}</span></td>
+        <td><span>{{car.color}}</span></td>
+        <td><span>{{car.year}}</span></td>
+        <td><span>{{car.marque}}</span></td>
+        <td><span>{{car.model}}</span></td>
+        <td>
+            <button class="btn btn-sm btn-info">
+              <i class="fa fa-search"></i>Details</button>
+            <button class="btn btn-sm btn-warning">
+              <i class="fa fa-edit"></i>Edit</button>
+            <button class="btn btn-sm btn-danger">
+              <i class="fa fa-remove"></i>Delete</button>
+          </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>

@@ -9,12 +9,14 @@ import { FriendComponent } from './friend/friend.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CarComponent } from './car/car.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    FriendComponent
+    FriendComponent,
+    CarComponent
   ],
   imports: [
     BrowserModule,

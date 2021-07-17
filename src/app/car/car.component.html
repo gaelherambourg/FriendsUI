@@ -1,6 +1,6 @@
 <div class="container">
     <div class="border">
-        <button class="btn btn-md btn-outline-primary">
+        <button class="btn btn-md btn-outline-primary" (click)="open(content)">
           <i class="fa fa-user"></i>New Car</button>
     </div>
     <table class="table table-bordered table-striped">
@@ -33,3 +33,46 @@
       </tbody>
     </table>
   </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New Friend</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+            <div class="form-group">
+                <label for="color">Color</label>
+                <div class="input-group">
+                    <input id="color" name="color" class="form-control" ngModel>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="year">Year</label>
+                <div class="input-group">
+                    <input id="year" name="year" class="form-control" ngModel>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="marque">Marque</label>
+                <div class="input-group">
+                    <input id="marque" name="marque" class="form-control" ngModel>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="model">Model</label>
+                <div class="input-group">
+                    <input id="model" name="model" class="form-control" ngModel>
+                </div>
+            </div>
+            <div class="border text-center">
+                <button data-dismiss="modal" class="btn btn-info">Submit</button>
+                </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+    </div>
+  </ng-template>

@@ -17,3 +17,7 @@ margin-right: 10px;
 table .btn{
     margin: 2px;
   }
+  a{
+    margin: 5px 0px 0px 15px;
+    font-weight: bold;
+  }

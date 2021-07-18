@@ -23,6 +23,8 @@ export class CarComponent implements OnInit {
 
   cars!: Car[];
   closeResult!: String;
+  editForm!: FormGroup;
+  deleteId!: Number;
 
   constructor(
     private httpClient: HttpClient,
@@ -33,6 +35,13 @@ export class CarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCars();
+    this.editForm = this.fb.group({
+      id: [''],
+      color: [''],
+      year: [''],
+      marque: [''],
+      model: ['']
+    } );
   }
 
   getCars(){
@@ -81,5 +90,46 @@ export class CarComponent implements OnInit {
     document.getElementById('year_d')!.setAttribute('value', car.year.toString());
     document.getElementById('marque_d')!.setAttribute('value', car.marque);
     document.getElementById('model_d')!.setAttribute('value', car.model);
+  }
+
+  openEdit(targetModal: any, car: Car) {
+    this.modalService.open(targetModal, {
+      backdrop: 'static',
+      size: 'lg'
+    });
+    this.editForm.patchValue( {
+      id: car.id, 
+      color: car.color,
+      year: car.year,
+      marque: car.marque,
+      model: car.model
+    });
+  }
+
+  onSave() {
+    const editURL = 'http://localhost:8080/cars/' + this.editForm.value.id + '/edit';
+    console.log(this.editForm.value);
+    this.httpClient.put(editURL, this.editForm.value)
+      .subscribe(() => {
+        this.ngOnInit();
+        this.modalService.dismissAll();
+      });
+  }
+
+  openDelete(targetModal: any, car: Car) {
+    this.deleteId = car.id;
+    this.modalService.open(targetModal, {
+      backdrop: 'static',
+      size: 'lg'
+    });
+  }
+
+  onDelete() {
+    const deleteURL = 'http://localhost:8080/cars/' + this.deleteId + '/delete';
+    this.httpClient.delete(deleteURL)
+      .subscribe((results) => {
+        this.ngOnInit();
+        this.modalService.dismissAll();
+      });
   }
 }
